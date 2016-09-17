@@ -1,0 +1,41 @@
+{
+	"name": "addshore/php-project",
+	"description": "The blueprint PHP project",
+	"require": {
+		"wp-cli/php-cli-tools": "@stable",
+		"canteen/html5": "@stable"
+	},
+	"require-dev": {
+		"phpunit/phpunit": "@stable",
+		"squizlabs/php_codesniffer": "@stable",
+		"phpmd/phpmd": "@stable",
+		"jakub-onderka/php-parallel-lint": "@stable"
+	},
+	"autoload": {
+		"psr-4": {
+			"Project\\": "src/"
+		}
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"Project\\Tests\\": "tests/"
+		}
+	},
+	"scripts": {
+		"check": [
+			"composer validate --no-interaction",
+			"parallel-lint . --exclude vendor",
+			"phpcs -sp"
+		],
+		"test": [
+			"composer validate --no-interaction",
+			"php ./vendor/phpunit/phpunit/phpunit"
+		],
+		"webserver": [
+			"php -S localhost:8000 -t ./web"
+		],
+		"app": [
+			"php bin/app.php"
+		]
+	}
+}
