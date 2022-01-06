@@ -1,3 +1,0 @@
-# Project
-
-Easy starting project...
